@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import './ButtonSheet.scss';
+import { Button } from '@mui/material';
 
 function ButtonSheet() {
     return (
         <div>
             <Link to="/personnage">
-                <button>Accéder au tableau de personnage</button>
+                <Button variant="contained">Accéder au tableau de personnage</Button>
             </Link>
         </div>
     );
