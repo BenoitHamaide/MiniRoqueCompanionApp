@@ -33,6 +33,15 @@ function SheetComponent() {
 
   const [characterStats, setCharacterStats] = useState(null);
 
+  const handleIncrementHealth = () => {
+    if (characterStats && characterStats.health < 20) {
+      setCharacterStats((prevStats) => ({
+        ...prevStats,
+        health: prevStats.health + 1,
+      }));
+    }
+  };
+
   const updateCharacterStats = (stats) => {
     setCharacterStats(stats);
   };
@@ -50,7 +59,7 @@ function SheetComponent() {
           <Grid item xs={12} sm={6}>
             <Card variant="outlined">
               <CardContent className="experience-card">
-                <ExperienceCounter />
+                <ExperienceCounter handleIncrementHealth={handleIncrementHealth} characterStats={characterStats} />
               </CardContent>
             </Card>
           </Grid>

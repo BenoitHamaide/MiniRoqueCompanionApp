@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@mui/material';
 import './LifeCounter.scss';
 
-function LifeCounter({ characterStats }) {
+function LifeCounter({ characterStats, handleIncrementHealth }) {
   const [healthPoints, setHealthPoints] = useState(0);
 
   useEffect(() => {
@@ -47,5 +47,3 @@ function LifeCounter({ characterStats }) {
 }
 
 export default LifeCounter;
-
-
