@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@mui/material';
 import './RationCounter.scss';
 
-const RationCounter = ({ characterStats }) => {
+const RationCounter = ({ characterStats, handleDecrementHealth }) => {
   const [rationPoints, setRationPoints] = useState(0);
 
   useEffect(() => {
@@ -23,6 +23,12 @@ const RationCounter = ({ characterStats }) => {
     }
   };
 
+  useEffect(() => {
+    if (rationPoints === 0 && characterStats && characterStats.rations === 0) {
+      handleDecrementHealth(); // Déduire 3 points de vie lorsque le compteur de ration passe à 0
+    }
+  }, [rationPoints, characterStats, handleDecrementHealth]);
+
   const getStatus = () => {
     return `Ration : ${rationPoints} / 4`;
   };
@@ -30,8 +36,10 @@ const RationCounter = ({ characterStats }) => {
   return (
     <div>
       <h2>{getStatus()}</h2>
-      <Button variant="contained" color='error' onClick={handleDecrement}>Diminuer Ration</Button>
-      <Button variant="contained" color='success' onClick={handleIncrement} disabled={rationPoints >= 4}>
+      <Button variant="contained" color="error" onClick={handleDecrement} disabled={false}>
+        Diminuer Ration
+      </Button>
+      <Button variant="contained" color="success" onClick={handleIncrement} disabled={rationPoints >= 4}>
         Augmenter Ration
       </Button>
     </div>

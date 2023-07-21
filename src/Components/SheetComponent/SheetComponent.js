@@ -42,6 +42,24 @@ function SheetComponent() {
     }
   };
 
+  const handleDecrementHealth = () => {
+    if (characterStats && characterStats.health > 0) {
+      setCharacterStats((prevStats) => ({
+        ...prevStats,
+        health: prevStats.health - 1,
+      }));
+    }
+  };
+
+  const handleAddHealth = () => {
+    if (characterStats?.health < 20 && characterStats?.health >= 0) {
+      setCharacterStats((prevStats) => ({
+        ...prevStats,
+        health: prevStats.health + 1,
+      }));
+    }
+  };
+
   const updateCharacterStats = (stats) => {
     setCharacterStats(stats);
   };
@@ -55,51 +73,63 @@ function SheetComponent() {
       <Container>
         <h2>Plateau personnage</h2>
         <CharacterSelector characters={characters} onUpdateStats={updateCharacterStats} />
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}>
-            <Card variant="outlined">
-              <CardContent className="experience-card">
-                <ExperienceCounter handleIncrementHealth={handleIncrementHealth} characterStats={characterStats} />
-              </CardContent>
-            </Card>
+        {characterStats && (
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <Card variant="outlined">
+                <CardContent className="experience-card">
+                  <ExperienceCounter
+                    handleIncrementHealth={handleIncrementHealth}
+                    characterStats={characterStats}
+                    handleAddHealth={handleAddHealth}
+                  />
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Card variant="outlined">
+                <CardContent className="armor-card">
+                  <ArmorCounter characterStats={characterStats} />
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Card variant="outlined">
+                <CardContent className="health-card">
+                  <LifeCounter
+                    characterStats={characterStats}
+                    handleIncrementHealth={handleIncrementHealth}
+                    handleDecrementHealth={handleDecrementHealth}
+                  />
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Card variant="outlined">
+                <CardContent className="ration-card">
+                  <RationCounter
+                    characterStats={characterStats}
+                    handleDecrementHealth={handleDecrementHealth}
+                  />
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Card variant="outlined">
+                <CardContent className="gold-card">
+                  <GoldCounter characterStats={characterStats} />
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Card variant="outlined">
+                <CardContent className="potion-card">
+                  <PotionSelector characterStats={characterStats} />
+                </CardContent>
+              </Card>
+            </Grid>
           </Grid>
-          <Grid item xs={12} sm={6}>
-            <Card variant="outlined">
-              <CardContent className="armor-card">
-                <ArmorCounter characterStats={characterStats} />
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Card variant="outlined">
-              <CardContent className="health-card">
-                {/* Utiliser uniquement le LifeCounter qui reçoit les stats du personnage sélectionné */}
-                <LifeCounter characterStats={characterStats} />
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Card variant="outlined">
-              <CardContent className="ration-card">
-                <RationCounter characterStats={characterStats} />
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Card variant="outlined">
-              <CardContent className="gold-card">
-                <GoldCounter characterStats={characterStats} />
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Card variant="outlined">
-              <CardContent className="potion-card">
-                <PotionSelector characterStats={characterStats} />
-              </CardContent>
-            </Card>
-          </Grid>
-        </Grid>
+        )}
       </Container>
     </div>
   );

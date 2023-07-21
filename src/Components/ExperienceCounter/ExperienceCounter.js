@@ -1,8 +1,8 @@
+import React, { useState } from 'react';
 import { Button } from '@mui/material';
 import './ExperienceCounter.scss';
-import { useState } from 'react';
 
-function ExperienceCounter({ handleIncrementHealth }) {
+function ExperienceCounter({ handleIncrementHealth, handleAddHealth }) {
   const [experiencePoints, setExperiencePoints] = useState(0);
 
   const handleIncrement = () => {
@@ -10,7 +10,7 @@ function ExperienceCounter({ handleIncrementHealth }) {
       setExperiencePoints((prevPoints) => prevPoints + 1);
     } else {
       // Appeler la fonction de rappel pour incrémenter les points de vie
-      handleIncrementHealth();
+      handleAddHealth();
     }
   };
 
@@ -22,9 +22,9 @@ function ExperienceCounter({ handleIncrementHealth }) {
 
   const getLevel = () => {
     if (experiencePoints >= 18) {
-      return 'Niveau 3';
+      return 'Niveau 3: + 2 dés blancs';
     } else if (experiencePoints >= 6) {
-      return 'Niveau 2';
+      return 'Niveau 2: + 1 dé blanc';
     } else {
       return 'Niveau 1';
     }
@@ -39,13 +39,12 @@ function ExperienceCounter({ handleIncrementHealth }) {
       <Button variant="contained" color="error" onClick={handleDecrement}>
         Diminuer
       </Button>
-      {/* Le bouton Augmenter est toujours actif une fois atteint 23 points */}
       <Button
         variant="contained"
         color="success"
         className="augmenter"
         onClick={handleIncrement}
-        // On retire la désactivation du bouton ici
+        disabled={experiencePoints >= 23} // Désactiver le bouton lorsque l'expérience est à son maximum
       >
         Augmenter
       </Button>
