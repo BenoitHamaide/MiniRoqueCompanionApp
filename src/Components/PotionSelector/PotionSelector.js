@@ -1,7 +1,7 @@
+import React, { useState, useEffect } from 'react';
 import './PotionSelector.scss';
-import { useState } from 'react';
 
-const PotionSelector = () => {
+const PotionSelector = ({ characterStats }) => {
   const [potion1, setPotion1] = useState(0);
   const [potion2, setPotion2] = useState(0);
 
@@ -19,6 +19,14 @@ const PotionSelector = () => {
     { value: 5, name: 'Eau Bénite' },
     { value: 6, name: 'Perception' },
   ];
+
+  useEffect(() => {
+    if (characterStats) {
+      // Update potion values based on characterStats
+      setPotion1(characterStats.potion1 || 0);
+      setPotion2(characterStats.potion2 || 0);
+    }
+  }, [characterStats]);
 
   const handlePotion1Change = (event) => {
     setPotion1(parseInt(event.target.value, 10));
@@ -80,4 +88,3 @@ const PotionSelector = () => {
 };
 
 export default PotionSelector;
-

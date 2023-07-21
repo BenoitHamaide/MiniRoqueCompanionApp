@@ -1,10 +1,15 @@
+import React, { useState, useEffect } from 'react';
 import { Button } from '@mui/material';
 import './ArmorCounter.scss';
 
-import { useState } from 'react';
-
-const ArmorCounter = () => {
+const ArmorCounter = ({ characterStats }) => {
   const [armorPoints, setArmorPoints] = useState(0);
+
+  useEffect(() => {
+    if (characterStats) {
+      setArmorPoints(characterStats.armor || 0);
+    }
+  }, [characterStats]);
 
   const handleIncrement = () => {
     if (armorPoints < 4) {
@@ -31,4 +36,5 @@ const ArmorCounter = () => {
 };
 
 export default ArmorCounter;
+
 

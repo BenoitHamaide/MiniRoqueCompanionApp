@@ -1,10 +1,15 @@
+import React, { useState, useEffect } from 'react';
 import { Button } from '@mui/material';
 import './GoldCounter.scss';
 
-import { useState } from 'react';
-
-const GoldCounter = () => {
+const GoldCounter = ({ characterStats }) => {
   const [goldPoints, setGoldPoints] = useState(0);
+
+  useEffect(() => {
+    if (characterStats) {
+      setGoldPoints(characterStats.gold || 0);
+    }
+  }, [characterStats]);
 
   const handleIncrement = () => {
     if (goldPoints < 10) {
@@ -24,10 +29,9 @@ const GoldCounter = () => {
 
   return (
     <div>
-      <h2>{getStatus()}</h2><Button variant="contained" color='error' onClick={handleDecrement}>Dépenser une pièce d'or</Button>
-      
-      <Button variant="contained" color='success' onClick={handleIncrement} disabled={goldPoints >= 10}>Gagner une pièce d'or
-      </Button>
+      <h2>{getStatus()}</h2>
+      <Button variant="contained" color='error' onClick={handleDecrement}>Dépenser une pièce d'or</Button>
+      <Button variant="contained" color='success' onClick={handleIncrement} disabled={goldPoints >= 10}>Gagner une pièce d'or</Button>
     </div>
   );
 };

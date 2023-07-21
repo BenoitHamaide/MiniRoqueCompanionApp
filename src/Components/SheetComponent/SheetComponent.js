@@ -15,19 +15,19 @@ function SheetComponent() {
   const characters = [
     {
       name: 'Croisé',
-      stats: { health: 10, armor: 1, rations: 4 },
+      stats: { health: 10, armor: 1, rations: 4, potion1: 0, potion2: 0 },
     },
     {
       name: 'Prêtresse',
-      stats: { health: 13, gold: 2, rations: 3, 'eau bénite': 1 },
+      stats: { health: 13, gold: 2, rations: 3, potion1: 0, potion2: 5 },
     },
     {
       name: 'Rogue',
-      stats: { health: 10, gold: 5, rations: 3 },
+      stats: { health: 10, gold: 5, rations: 3, potion1: 0, potion2: 0 },
     },
     {
       name: 'Mage',
-      stats: { health: 11, gold: 3, rations: 4, 'potion de perception': 1 },
+      stats: { health: 11, gold: 3, rations: 4, potion1: 0, potion2: 6 },
     },
   ];
 
@@ -57,7 +57,7 @@ function SheetComponent() {
           <Grid item xs={12} sm={6}>
             <Card variant="outlined">
               <CardContent className="armor-card">
-                <ArmorCounter />
+                <ArmorCounter characterStats={characterStats} />
               </CardContent>
             </Card>
           </Grid>
@@ -72,21 +72,21 @@ function SheetComponent() {
           <Grid item xs={12} sm={6}>
             <Card variant="outlined">
               <CardContent className="ration-card">
-                <RationCounter />
+                <RationCounter characterStats={characterStats} />
               </CardContent>
             </Card>
           </Grid>
           <Grid item xs={12} sm={6}>
             <Card variant="outlined">
               <CardContent className="gold-card">
-                <GoldCounter />
+                <GoldCounter characterStats={characterStats} />
               </CardContent>
             </Card>
           </Grid>
           <Grid item xs={12} sm={6}>
             <Card variant="outlined">
               <CardContent className="potion-card">
-                <PotionSelector />
+                <PotionSelector characterStats={characterStats} />
               </CardContent>
             </Card>
           </Grid>

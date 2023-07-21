@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
 const CharacterSelector = ({ characters, onUpdateStats }) => {
   const [selectedCharacter, setSelectedCharacter] = useState(null);
