@@ -30,18 +30,21 @@ const RationCounter = ({ characterStats, handleDecrementHealth }) => {
   }, [rationPoints, characterStats, handleDecrementHealth]);
 
   const getStatus = () => {
-    return `Ration : ${rationPoints} / 4`;
+    return `${rationPoints} / 4`;
   };
 
   return (
-    <div>
+    <div className='ration'>
+      <h1>Rations</h1>
       <h2>{getStatus()}</h2>
+      <div className='buttons'>
       <Button variant="contained" color="error" onClick={handleDecrement} disabled={false}>
-        Diminuer Ration
+        Diminuer
       </Button>
       <Button variant="contained" color="success" onClick={handleIncrement} disabled={rationPoints >= 4}>
-        Augmenter Ration
+        Augmenter
       </Button>
+      </div>
     </div>
   );
 };

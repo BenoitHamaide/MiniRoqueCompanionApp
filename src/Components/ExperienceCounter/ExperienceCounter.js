@@ -31,11 +31,12 @@ function ExperienceCounter({ handleIncrementHealth, handleAddHealth }) {
   };
 
   return (
-    <div>
-      <h2>Expérience</h2>
-      <h3>prouesse: -1xp</h3>
+    <div className='experience'>
+      <h1>Expérience</h1>
+      
       <h2>{getLevel()}</h2>
-      <p>Points d'expérience : {experiencePoints}</p>
+      <h3>Points d'expérience : {experiencePoints}</h3>
+      <div className='buttons'>
       <Button variant="contained" color="error" onClick={handleDecrement}>
         Diminuer
       </Button>
@@ -48,6 +49,8 @@ function ExperienceCounter({ handleIncrementHealth, handleAddHealth }) {
       >
         Augmenter
       </Button>
+      </div>
+      <p>prouesse: -1xp</p>
     </div>
   );
 }

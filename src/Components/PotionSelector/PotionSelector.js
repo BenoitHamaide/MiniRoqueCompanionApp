@@ -7,14 +7,14 @@ const PotionSelector = ({ characterStats }) => {
 
   // Create separate arrays for each potion selection
   const potions1 = [
-    { value: 0, name: '0' },
+    { value: 0, name: 'Aucune' },
     { value: 1, name: 'Feu' },
     { value: 2, name: 'Givre' },
     { value: 3, name: 'Poison' },
   ];
 
   const potions2 = [
-    { value: 0, name: '0' },
+    { value: 0, name: 'Aucune' },
     { value: 4, name: 'Soins' },
     { value: 5, name: 'Eau Bénite' },
     { value: 6, name: 'Perception' },
@@ -43,45 +43,33 @@ const PotionSelector = ({ characterStats }) => {
   };
 
   return (
-    <div>
-      <h2>Sélecteur de Potions</h2>
-      <div>
-        <label>
-          Potion 1 :
-          {potions1.map((potion) => (
-            <span key={potion.value}>
-              <input
-                type="radio"
-                name="potion1"
-                value={potion.value}
-                checked={potion1 === potion.value}
-                onChange={handlePotion1Change}
-              />{' '}
-              {potion.name}
-            </span>
-          ))}
-        </label>
-      </div>
-      <div>
-        <label>
-          Potion 2 :
-          {potions2.map((potion) => (
-            <span key={potion.value}>
-              <input
-                type="radio"
-                name="potion2"
-                value={potion.value}
-                checked={potion2 === potion.value}
-                onChange={handlePotion2Change}
-              />{' '}
-              {potion.name}
-            </span>
-          ))}
-        </label>
-      </div>
-      <div>
-        <p>Potion 1 sélectionnée : {getPotionName(potion1, potions1)}</p>
-        <p>Potion 2 sélectionnée : {getPotionName(potion2, potions2)}</p>
+    <div className='potion'>
+      <h1>Potions</h1>
+      <div className='potionChoice'>
+        <div>
+          <label className='potion1'>
+            Potion
+            <select name="potion1" value={potion1} onChange={handlePotion1Change}>
+              {potions1.map((potion) => (
+                <option key={potion.value} value={potion.value}>
+                  {potion.name}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+        <div>
+          <label className='potion2'>
+            Potion
+            <select name="potion2" value={potion2} onChange={handlePotion2Change}>
+              {potions2.map((potion) => (
+                <option key={potion.value} value={potion.value}>
+                  {potion.name}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
       </div>
     </div>
   );

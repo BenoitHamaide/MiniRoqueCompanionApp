@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function ButtonHome() {
     return (
-        <div>
+        <div className='homeButton'>
             <Link to="/">
             <IconButton > 
             <HomeIcon fontSize='small'/>

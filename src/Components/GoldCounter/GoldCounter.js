@@ -24,14 +24,17 @@ const GoldCounter = ({ characterStats }) => {
   };
 
   const getStatus = () => {
-    return `Pièces d'or : ${goldPoints} / 10`;
+    return `${goldPoints} / 10`;
   };
 
   return (
-    <div>
+    <div className='gold'>
+      <h1>Pièces d'or</h1>
       <h2>{getStatus()}</h2>
-      <Button variant="contained" color='error' onClick={handleDecrement}>Dépenser une pièce d'or</Button>
-      <Button variant="contained" color='success' onClick={handleIncrement} disabled={goldPoints >= 10}>Gagner une pièce d'or</Button>
+      <div className='buttons'>
+      <Button variant="contained" color='error' onClick={handleDecrement}>Dépenser</Button>
+      <Button variant="contained" color='success' onClick={handleIncrement} disabled={goldPoints >= 10}>Gagner</Button>
+      </div>
     </div>
   );
 };

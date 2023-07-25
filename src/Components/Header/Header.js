@@ -2,9 +2,9 @@ import './Header.scss'
 
 function Header() {
     return (
-        <div>
+        <div className='header'>
             <h1>MINI-ROGUE</h1>
-            <h2>App Companion</h2>
+            <h3>App Companion</h3>
         </div>
     );
 }

@@ -72,9 +72,9 @@ function SheetComponent() {
       </div>
       <Container>
         <h2>Plateau personnage</h2>
-        <CharacterSelector characters={characters} onUpdateStats={updateCharacterStats} />
+        <CharacterSelector  characters={characters} onUpdateStats={updateCharacterStats} />
         {characterStats && (
-          <Grid container spacing={2}>
+          <Grid  className="selection" container spacing={2}>
             <Grid item xs={12} sm={6}>
               <Card variant="outlined">
                 <CardContent className="experience-card">

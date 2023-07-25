@@ -47,21 +47,23 @@ function LifeCounter({ characterStats, handleIncrementHealth, handleDecrementHea
     if (healthPoints === 0) {
       return 'Mort du héros';
     } else {
-      return `Points de vie : ${healthPoints}`;
+      return `${healthPoints}`;
     }
   };
 
   return (
-    <div>
-      <h2>PV</h2>
-      <h3>prouesse: -1pv</h3>
+    <div className='life'>
+      <h1>Points de vie</h1>
       <h2>{getStatus()}</h2>
+      <div className='buttons'>
       <Button variant="contained" color="error" onClick={handleDecrement}>
-        Diminuer PV
+        Diminuer
       </Button>
       <Button variant="contained" color="success" onClick={handleIncrement} disabled={healthPoints >= 20}>
-        Augmenter PV
+        Augmenter
       </Button>
+      </div>
+      <p>prouesse: -1pv</p>
     </div>
   );
 }

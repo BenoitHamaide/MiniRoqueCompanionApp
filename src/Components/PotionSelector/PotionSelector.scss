@@ -1,0 +1,48 @@
+.potion {
+   h1{
+        color: black;
+        margin: 0.2rem;
+    }
+    .potionChoice {
+      margin-bottom: 20px;
+  display: flex;
+flex-direction: column;
+      div {
+        margin-right: 20px;
+  
+        label {
+          font-weight: bold;
+          display: block;
+          margin-bottom: 5px;
+          
+  
+          select {
+            padding: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color:#F6EFDC ;
+            outline: none;
+            width: 7rem;
+            margin: 1rem;
+            &:hover {
+              border-color: #999;
+            }
+  
+            &:focus {
+              border-color: #007bff;
+              box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+            }
+          }
+        }
+      }
+    }
+  
+    div {
+      p {
+        font-size: 16px;
+        margin-bottom: 5px;
+      }
+    }
+  }
+  

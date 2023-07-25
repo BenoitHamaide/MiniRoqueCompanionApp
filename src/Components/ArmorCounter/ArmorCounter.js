@@ -24,12 +24,13 @@ const ArmorCounter = ({ characterStats }) => {
   };
 
   return (
-    <div>
-      <h2>Armure</h2>
-      <div>
-        <Button variant="contained" color='error' onClick={handleDecrement}>-</Button>
-        <span>{armorPoints}</span>
-        <Button variant="contained" color='success' onClick={handleIncrement} disabled={armorPoints >= 4}>+</Button>
+    <div className='armor'>
+      <h1>Armure</h1>
+      <h2>{armorPoints}</h2>
+      <div className='buttons'>
+        <Button variant="contained" color='error' onClick={handleDecrement}>DIMINUER</Button>
+        
+        <Button variant="contained" color='success' onClick={handleIncrement} disabled={armorPoints >= 4}>AUGMENTER</Button>
       </div>
     </div>
   );

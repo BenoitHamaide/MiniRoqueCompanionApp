@@ -15,7 +15,7 @@ const CharacterSelector = ({ characters, onUpdateStats }) => {
 
   return (
     <div>
-      <h2>Sélectionnez votre personnage :</h2>
+      
       <FormControl fullWidth variant="outlined">
         <InputLabel>Personnage</InputLabel>
         <Select value={selectedCharacter?.name || ''} onChange={handleCharacterSelect} label="Personnage">

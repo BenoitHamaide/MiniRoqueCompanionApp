@@ -1,7 +1,12 @@
 .App {
   text-align: center;
   border: #6C4782 solid 2px;
+  padding: 1rem;
   margin: 1rem;
+}
+.buttons{
+  display: flex;
+  justify-content: space-around;
 }
 
 
