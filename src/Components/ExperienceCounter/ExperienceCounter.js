@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@mui/material';
 import './ExperienceCounter.scss';
 
-function ExperienceCounter({ handleIncrementHealth, handleAddHealth }) {
+const ExperienceCounter = ({ characterStats, handleIncrementHealth, handleAddHealth }) => {
   const [experiencePoints, setExperiencePoints] = useState(0);
+
+  useEffect(() => {
+    if (characterStats) {
+      setExperiencePoints(characterStats.experience || 0);
+    }
+  }, [characterStats]);
 
   const handleIncrement = () => {
     if (experiencePoints < 23) {
@@ -33,26 +39,25 @@ function ExperienceCounter({ handleIncrementHealth, handleAddHealth }) {
   return (
     <div className='experience'>
       <h1>Expérience</h1>
-      
       <h2>{getLevel()}</h2>
       <h3>Points d'expérience : {experiencePoints}</h3>
       <div className='buttons'>
-      <Button variant="contained" color="error" onClick={handleDecrement}>
-        Diminuer
-      </Button>
-      <Button
-        variant="contained"
-        color="success"
-        className="augmenter"
-        onClick={handleIncrement}
-        disabled={experiencePoints >= 23} // Désactiver le bouton lorsque l'expérience est à son maximum
-      >
-        Augmenter
-      </Button>
+        <Button variant="contained" color="error" onClick={handleDecrement}>
+          Diminuer
+        </Button>
+        <Button
+          variant="contained"
+          color="success"
+          className="augmenter"
+          onClick={handleIncrement}
+          disabled={experiencePoints >= 23} // Désactiver le bouton lorsque l'expérience est à son maximum
+        >
+          Augmenter
+        </Button>
       </div>
       <p>prouesse: -1xp</p>
     </div>
   );
-}
+};
 
 export default ExperienceCounter;

@@ -63,7 +63,7 @@ function LifeCounter({ characterStats, handleIncrementHealth, handleDecrementHea
         Augmenter
       </Button>
       </div>
-      <p>prouesse: -1pv</p>
+      <p>prouesse: -2pv</p>
     </div>
   );
 }

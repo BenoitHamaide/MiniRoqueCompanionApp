@@ -29,6 +29,22 @@ function SheetComponent() {
       name: 'Mage',
       stats: { health: 11, gold: 3, rations: 4, potion1: 0, potion2: 6 },
     },
+    {
+      name: 'Sorcière',
+      stats: { health: 10, rations: 3, potion1: 0, potion2: 0 },
+    },
+    {
+      name: 'Bones',
+      stats: { health: 10, experience: 2, rations: 2, potion1: 0, potion2: 0 },
+    },
+    {
+      name: 'Voleur',
+      stats: { health: 10, gold: 10, rations: 1, potion1: 0, potion2: 6 },
+    },
+    {
+      name: 'Clerc',
+      stats: { health: 9, armor: 1, rations: 2, potion1: 0, potion2: 0 },
+    },
   ];
 
   const [characterStats, setCharacterStats] = useState(null);
