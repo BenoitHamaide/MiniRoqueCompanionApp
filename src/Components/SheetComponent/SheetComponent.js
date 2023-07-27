@@ -10,6 +10,7 @@ import RationCounter from '../RationCounter/RationCounter';
 import './SheetComponent.scss';
 import ButtonHome from '../ButtonHome/ButtonHome';
 import CharacterSelector from '../CharacterSelector/CharacterSelector';
+import StatusCard from '../StatusCard/StatusCard';
 
 function SheetComponent() {
   const characters = [
@@ -31,7 +32,7 @@ function SheetComponent() {
     },
     {
       name: 'Sorcière',
-      stats: { health: 10, rations: 3, potion1: 0, potion2: 0 },
+      stats: { health: 10, rations: 3, potion1: 3, potion2: 0 },
     },
     {
       name: 'Bones',
@@ -43,11 +44,21 @@ function SheetComponent() {
     },
     {
       name: 'Clerc',
-      stats: { health: 9, armor: 1, rations: 2, potion1: 0, potion2: 0 },
+      stats: { health: 9, armor: 1, rations: 2, potion1: 0, potion2: 4 },
     },
   ];
 
   const [characterStats, setCharacterStats] = useState(null);
+  const [isCursed, setIsCursed] = useState(false);
+  const [isPoisoned, setIsPoisoned] = useState(false);
+
+  const handleCursedChange = () => {
+    setIsCursed(!isCursed);
+  };
+
+  const handlePoisonedChange = () => {
+    setIsPoisoned(!isPoisoned);
+  };
 
   const handleIncrementHealth = () => {
     if (characterStats && characterStats.health < 20) {
@@ -88,10 +99,22 @@ function SheetComponent() {
       </div>
       <Container>
         <h2>Plateau personnage</h2>
-        <CharacterSelector  characters={characters} onUpdateStats={updateCharacterStats} />
+        <CharacterSelector characters={characters} onUpdateStats={updateCharacterStats} />
         {characterStats && (
-          <Grid  className="selection" container spacing={2}>
+          <Grid className="selection" container spacing={2}>
             <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
+              <Card variant="outlined">
+                <CardContent>
+                  <StatusCard
+                    isCursed={isCursed}
+                    isPoisoned={isPoisoned}
+                    onCursedChange={handleCursedChange}
+                    onPoisonedChange={handlePoisonedChange}
+                  />
+                </CardContent>
+              </Card>
+            </Grid>
               <Card variant="outlined">
                 <CardContent className="experience-card">
                   <ExperienceCounter
@@ -102,6 +125,7 @@ function SheetComponent() {
                 </CardContent>
               </Card>
             </Grid>
+            
             <Grid item xs={12} sm={6}>
               <Card variant="outlined">
                 <CardContent className="armor-card">
@@ -144,6 +168,7 @@ function SheetComponent() {
                 </CardContent>
               </Card>
             </Grid>
+           
           </Grid>
         )}
       </Container>
