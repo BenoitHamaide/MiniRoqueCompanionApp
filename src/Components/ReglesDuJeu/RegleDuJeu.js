@@ -3,6 +3,7 @@ import MiseEnPlace from "./SectionRegles/MiseEnPlace";
 import PlateauDonjon from "./SectionRegles/PlateauDonjon";
 import ButtonHome from "../ButtonHome/ButtonHome";
 import SectionRegles from "./SectionRegles/SectionRegles";
+import PlateauPersonnage from "./SectionRegles/PlateauPersonnage";
 
 const ReglesDuJeu = () => {
   const [sectionActive, setSectionActive] = useState(0);
@@ -10,6 +11,7 @@ const ReglesDuJeu = () => {
   const sectionsRegles = [
     { titre: "Mise en place", contenu: <MiseEnPlace /> },
     { titre: "Plateau Donjon", contenu: <PlateauDonjon /> },
+    { titre: "Plateau Personnage", contenu: <PlateauPersonnage /> },
     // Add other sections here
   ];
 
